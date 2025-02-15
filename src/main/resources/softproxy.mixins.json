@@ -1,0 +1,13 @@
+{
+  "required": true,
+  "minVersion": "0.8",
+  "package": "de.zohiu.softproxy.mixin",
+  "compatibilityLevel": "JAVA_21",
+  "mixins": [
+    "NetworkMixin",
+    "ShutdownMixin"
+  ],
+  "injectors": {
+    "defaultRequire": 1
+  }
+}

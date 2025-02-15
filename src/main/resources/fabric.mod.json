@@ -1,0 +1,35 @@
+{
+  "schemaVersion": 1,
+  "id": "softproxy",
+  "version": "${version}",
+
+  "name": "SoftProxy",
+  "description": "",
+  "authors": [],
+  "contact": {},
+
+  "license": "All-Rights-Reserved",
+  "icon": "assets/softproxy/icon.png",
+
+  "environment": "server",
+  "entrypoints": {
+    "main": ["de.zohiu.softproxy.Softproxy"]
+  },
+
+  "mixins": [
+    "softproxy.mixins.json"
+    ,{
+      "config": "softproxy.client.mixins.json",
+      "environment": "client"
+    }
+  ],
+
+  "depends": {
+    "fabricloader": ">=${loader_version}",
+    "minecraft": "${minecraft_version}"
+  },
+
+  "softdepends": {
+    "FabricProxyLite": "*"
+  }
+}

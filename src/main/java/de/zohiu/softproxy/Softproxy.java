@@ -33,7 +33,8 @@ public class Softproxy implements ModInitializer {
             config = new Config();
             config.targetHost = "example.com";
             config.targetPort = 25565;
-            config.webhookURL = "https://example.com/webhook";  // Only used when FabricProxyLite is detected
+            config.startupWaitTime = 20;
+            config.webhookURL = "http://localhost/";  // Only used when FabricProxyLite is detected
             config.webhookFormat = "{\"content\":\"%secret%\"}";  // Default Discord JSON format
             config.webhookContentType = "application/json";
             config.webhookAuthorization = "Bearer YOUR_ACCESS_TOKEN";
@@ -72,7 +73,7 @@ public class Softproxy implements ModInitializer {
                 HttpResponse<String> response = client.send(request, HttpResponse.BodyHandlers.ofString());
                 System.out.println("Webhook response: (" + response.statusCode() + ") " + response.body());
                 // Now I need to wait for the server to restart before continuing.
-                Thread.sleep(20_000);
+                Thread.sleep(config.startupWaitTime * 1000);
 
 
             } catch (IOException e) {
